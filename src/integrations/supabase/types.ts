@@ -14,7 +14,81 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      agents: {
+        Row: {
+          cert: string | null
+          created_at: string
+          hair: string
+          name: string
+          outfit: string
+          skin: string
+          updated_at: string
+          user_id: string
+          xp: number
+        }
+        Insert: {
+          cert?: string | null
+          created_at?: string
+          hair?: string
+          name?: string
+          outfit?: string
+          skin?: string
+          updated_at?: string
+          user_id: string
+          xp?: number
+        }
+        Update: {
+          cert?: string | null
+          created_at?: string
+          hair?: string
+          name?: string
+          outfit?: string
+          skin?: string
+          updated_at?: string
+          user_id?: string
+          xp?: number
+        }
+        Relationships: []
+      }
+      mission_runs: {
+        Row: {
+          cert: string
+          clues_found: number
+          correct: boolean
+          created_at: string
+          id: string
+          mission_title: string
+          rank: string
+          score: number
+          user_id: string
+          xp_earned: number
+        }
+        Insert: {
+          cert: string
+          clues_found?: number
+          correct?: boolean
+          created_at?: string
+          id?: string
+          mission_title: string
+          rank: string
+          score: number
+          user_id: string
+          xp_earned?: number
+        }
+        Update: {
+          cert?: string
+          clues_found?: number
+          correct?: boolean
+          created_at?: string
+          id?: string
+          mission_title?: string
+          rank?: string
+          score?: number
+          user_id?: string
+          xp_earned?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
