@@ -28,13 +28,15 @@ const lockedBuildings = [
 
 function CityScreen() {
   const { session } = useSession();
-  const { data: agent, isLoading } = useAgent(session?.user.id);
+  const { data: agent, isSuccess } = useAgent(session?.user.id);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLoading && agent && !agent.cert) navigate({ to: "/quest" });
-    if (!isLoading && !agent) navigate({ to: "/creator" });
-  }, [isLoading, agent, navigate]);
+    if (!isSuccess) return;
+    if (!agent) navigate({ to: "/creator" });
+    else if (!agent.cert) navigate({ to: "/quest" });
+  }, [isSuccess, agent, navigate]);
+
 
   if (!agent?.cert) return null;
   const quest = questFor(agent.cert);
