@@ -49,7 +49,7 @@ export function AgentPhone({ agent }: { agent: Agent }) {
             </div>
 
             <div className="mt-4 flex items-center gap-4">
-              <AgentAvatar skin={agent.skin} hair={agent.hair} outfit={agent.outfit} size={92} />
+              <AgentAvatar skin={agent.skin} hair={agent.hair} outfit={agent.outfit} scale={0.28} />
               <div className="grid gap-1 text-sm">
                 <div className="text-muted-foreground">QUESTLINE</div>
                 <b>{quest ? quest.name : "Not chosen"}</b>
@@ -65,7 +65,7 @@ export function AgentPhone({ agent }: { agent: Agent }) {
               </div>
               <div className="rounded-xl border border-border p-3">
                 <div className="text-xs text-muted-foreground">SKILLS IN TRAINING</div>
-                {quest ? quest.skills.join(" · ") : "—"}
+                {quest ? quest.quest : "—"}
               </div>
             </div>
 
