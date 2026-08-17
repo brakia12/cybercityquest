@@ -181,6 +181,8 @@ function MissionScreen() {
           </div>
         </div>
       </section>
+      <AgentPhone agent={agent} />
+
     </main>
   );
 }
