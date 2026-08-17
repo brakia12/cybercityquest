@@ -1,26 +1,9 @@
 # Cyber City
 
-Here is my MVP worksheet, my clickable prototype and a mermaid chart of the core journey. Build one flow only. the user can [my one action] follow the prototype for layout , color and tone. build only the tier 1 features on my worksheet. skip everything else and list what you skipped. Ask me questions before you build it anything is unclear
+Cyber City is a game-based cybersecurity learning world where players create their own agent, choose a certification questline, and build real cyber skills by completing interactive missions instead of only reading lessons or answering traditional quizzes.
 
-This project was built with [Lovable](https://lovable.dev).
+Players can train toward certifications such as CompTIA Security+, CySA+, PenTest+, and CEH while exploring different areas of Cyber City. Each location represents a different type of cybersecurity experience, such as SOC investigations, network security, incident response, social engineering, vulnerability analysis, and ethical hacking. Missions ask players to inspect evidence, analyze logs, make security decisions, solve problems, and respond to simulated cyber incidents.
 
-**Live app**: https://cybercityquest.lovable.app
+As players progress, they earn XP, improve their mission rank, discover clues, unlock new areas, and build a cybersecurity skill profile. Certification objectives guide the learning behind the scenes, while the player experiences it as an adventure game with characters, missions, storylines, and challenges.
 
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/117abe8a-b9c6-47a0-a58c-4d63fea9b4c4).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+The goal of Cyber City is to make learning cybersecurity feel less like studying a textbook and more like becoming a cybersecurity professional inside an interactive world.
