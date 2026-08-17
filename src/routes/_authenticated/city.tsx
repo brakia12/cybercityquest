@@ -99,6 +99,8 @@ function CityScreen() {
           </div>
         ))}
       </div>
+      <AgentPhone agent={agent} />
     </main>
+
   );
 }
