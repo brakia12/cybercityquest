@@ -1,7 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 
+import { AgentPhone } from "@/components/AgentPhone";
 import { supabase } from "@/integrations/supabase/client";
+
 import { useAgent, useSaveAgent, useSession } from "@/lib/agent";
 import { missions, scoreMission, tabLabels, type TabKey } from "@/lib/missions";
 
@@ -179,6 +181,8 @@ function MissionScreen() {
           </div>
         </div>
       </section>
+      <AgentPhone agent={agent} />
+
     </main>
   );
 }
