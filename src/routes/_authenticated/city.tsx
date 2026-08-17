@@ -1,7 +1,9 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 
+import { AgentPhone } from "@/components/AgentPhone";
 import { Button } from "@/components/ui/button";
+
 import { useAgent, useSession } from "@/lib/agent";
 import { missions, questFor } from "@/lib/missions";
 
