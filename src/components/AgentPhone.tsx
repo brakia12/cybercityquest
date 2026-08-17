@@ -64,7 +64,7 @@ export function AgentPhone({ agent }: { agent: Agent }) {
                 {mission ? mission.title : "Choose a questline to unlock a case."}
               </div>
               <div className="rounded-xl border border-border p-3">
-                <div className="text-xs text-muted-foreground">SKILLS IN TRAINING</div>
+                <div className="text-xs text-muted-foreground">QUEST FOCUS</div>
                 {quest ? quest.quest : "—"}
               </div>
             </div>
