@@ -16,6 +16,7 @@ import { Route as AuthenticatedCityRouteImport } from './routes/_authenticated/c
 import { Route as AuthenticatedCreatorRouteImport } from './routes/_authenticated/creator'
 import { Route as AuthenticatedQuestRouteImport } from './routes/_authenticated/quest'
 import { Route as AuthenticatedBriefMissionIdRouteImport } from './routes/_authenticated/brief.$missionId'
+import { Route as AuthenticatedMissionMissionIdRouteImport } from './routes/_authenticated/mission.$missionId'
 import { Route as AuthenticatedResultRunIdRouteImport } from './routes/_authenticated/result.$runId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +54,12 @@ const AuthenticatedBriefMissionIdRoute =
     path: '/brief/$missionId',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedMissionMissionIdRoute =
+  AuthenticatedMissionMissionIdRouteImport.update({
+    id: '/mission/$missionId',
+    path: '/mission/$missionId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedResultRunIdRoute =
   AuthenticatedResultRunIdRouteImport.update({
     id: '/result/$runId',
@@ -67,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/creator': typeof AuthenticatedCreatorRoute
   '/quest': typeof AuthenticatedQuestRoute
   '/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
+  '/mission/$missionId': typeof AuthenticatedMissionMissionIdRoute
   '/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
 export interface FileRoutesByTo {
@@ -76,6 +84,7 @@ export interface FileRoutesByTo {
   '/creator': typeof AuthenticatedCreatorRoute
   '/quest': typeof AuthenticatedQuestRoute
   '/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
+  '/mission/$missionId': typeof AuthenticatedMissionMissionIdRoute
   '/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
 export interface FileRoutesById {
@@ -87,6 +96,7 @@ export interface FileRoutesById {
   '/_authenticated/creator': typeof AuthenticatedCreatorRoute
   '/_authenticated/quest': typeof AuthenticatedQuestRoute
   '/_authenticated/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
+  '/_authenticated/mission/$missionId': typeof AuthenticatedMissionMissionIdRoute
   '/_authenticated/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
 export interface FileRouteTypes {
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/creator'
     | '/quest'
     | '/brief/$missionId'
+    | '/mission/$missionId'
     | '/result/$runId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/creator'
     | '/quest'
     | '/brief/$missionId'
+    | '/mission/$missionId'
     | '/result/$runId'
   id:
     | '__root__'
@@ -117,6 +129,7 @@ export interface FileRouteTypes {
     | '/_authenticated/creator'
     | '/_authenticated/quest'
     | '/_authenticated/brief/$missionId'
+    | '/_authenticated/mission/$missionId'
     | '/_authenticated/result/$runId'
   fileRoutesById: FileRoutesById
 }
@@ -177,6 +190,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBriefMissionIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/mission/$missionId': {
+      id: '/_authenticated/mission/$missionId'
+      path: '/mission/$missionId'
+      fullPath: '/mission/$missionId'
+      preLoaderRoute: typeof AuthenticatedMissionMissionIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/result/$runId': {
       id: '/_authenticated/result/$runId'
       path: '/result/$runId'
@@ -192,6 +212,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedCreatorRoute: typeof AuthenticatedCreatorRoute
   AuthenticatedQuestRoute: typeof AuthenticatedQuestRoute
   AuthenticatedBriefMissionIdRoute: typeof AuthenticatedBriefMissionIdRoute
+  AuthenticatedMissionMissionIdRoute: typeof AuthenticatedMissionMissionIdRoute
   AuthenticatedResultRunIdRoute: typeof AuthenticatedResultRunIdRoute
 }
 
@@ -200,6 +221,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCreatorRoute: AuthenticatedCreatorRoute,
   AuthenticatedQuestRoute: AuthenticatedQuestRoute,
   AuthenticatedBriefMissionIdRoute: AuthenticatedBriefMissionIdRoute,
+  AuthenticatedMissionMissionIdRoute: AuthenticatedMissionMissionIdRoute,
   AuthenticatedResultRunIdRoute: AuthenticatedResultRunIdRoute,
 }
 
