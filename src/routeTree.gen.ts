@@ -15,6 +15,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedCityRouteImport } from './routes/_authenticated/city'
 import { Route as AuthenticatedCreatorRouteImport } from './routes/_authenticated/creator'
 import { Route as AuthenticatedQuestRouteImport } from './routes/_authenticated/quest'
+import { Route as AuthenticatedBriefMissionIdRouteImport } from './routes/_authenticated/brief.$missionId'
 import { Route as AuthenticatedResultRunIdRouteImport } from './routes/_authenticated/result.$runId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -46,6 +47,12 @@ const AuthenticatedQuestRoute = AuthenticatedQuestRouteImport.update({
   path: '/quest',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedBriefMissionIdRoute =
+  AuthenticatedBriefMissionIdRouteImport.update({
+    id: '/brief/$missionId',
+    path: '/brief/$missionId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedResultRunIdRoute =
   AuthenticatedResultRunIdRouteImport.update({
     id: '/result/$runId',
@@ -59,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/city': typeof AuthenticatedCityRoute
   '/creator': typeof AuthenticatedCreatorRoute
   '/quest': typeof AuthenticatedQuestRoute
+  '/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
   '/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
 export interface FileRoutesByTo {
@@ -67,6 +75,7 @@ export interface FileRoutesByTo {
   '/city': typeof AuthenticatedCityRoute
   '/creator': typeof AuthenticatedCreatorRoute
   '/quest': typeof AuthenticatedQuestRoute
+  '/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
   '/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
 export interface FileRoutesById {
@@ -77,13 +86,28 @@ export interface FileRoutesById {
   '/_authenticated/city': typeof AuthenticatedCityRoute
   '/_authenticated/creator': typeof AuthenticatedCreatorRoute
   '/_authenticated/quest': typeof AuthenticatedQuestRoute
+  '/_authenticated/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
   '/_authenticated/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/city' | '/creator' | '/quest' | '/result/$runId'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/city'
+    | '/creator'
+    | '/quest'
+    | '/brief/$missionId'
+    | '/result/$runId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/city' | '/creator' | '/quest' | '/result/$runId'
+  to:
+    | '/'
+    | '/auth'
+    | '/city'
+    | '/creator'
+    | '/quest'
+    | '/brief/$missionId'
+    | '/result/$runId'
   id:
     | '__root__'
     | '/'
@@ -92,6 +116,7 @@ export interface FileRouteTypes {
     | '/_authenticated/city'
     | '/_authenticated/creator'
     | '/_authenticated/quest'
+    | '/_authenticated/brief/$missionId'
     | '/_authenticated/result/$runId'
   fileRoutesById: FileRoutesById
 }
@@ -145,6 +170,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedQuestRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/brief/$missionId': {
+      id: '/_authenticated/brief/$missionId'
+      path: '/brief/$missionId'
+      fullPath: '/brief/$missionId'
+      preLoaderRoute: typeof AuthenticatedBriefMissionIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/result/$runId': {
       id: '/_authenticated/result/$runId'
       path: '/result/$runId'
@@ -159,6 +191,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedCityRoute: typeof AuthenticatedCityRoute
   AuthenticatedCreatorRoute: typeof AuthenticatedCreatorRoute
   AuthenticatedQuestRoute: typeof AuthenticatedQuestRoute
+  AuthenticatedBriefMissionIdRoute: typeof AuthenticatedBriefMissionIdRoute
   AuthenticatedResultRunIdRoute: typeof AuthenticatedResultRunIdRoute
 }
 
@@ -166,6 +199,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCityRoute: AuthenticatedCityRoute,
   AuthenticatedCreatorRoute: AuthenticatedCreatorRoute,
   AuthenticatedQuestRoute: AuthenticatedQuestRoute,
+  AuthenticatedBriefMissionIdRoute: AuthenticatedBriefMissionIdRoute,
   AuthenticatedResultRunIdRoute: AuthenticatedResultRunIdRoute,
 }
 
