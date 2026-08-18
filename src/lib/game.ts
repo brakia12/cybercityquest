@@ -213,7 +213,12 @@ export function useClassRoster(classId: string) {
           .from("agents")
           .select("user_id, name, cert, xp, streak_count")
           .in("user_id", ids),
-        supabase.from("mission_runs").select(RUN_COLUMNS + ", user_id").in("user_id", ids),
+        supabase
+          .from("mission_runs")
+          .select(
+            "id, user_id, cert, mission_id, mission_title, score, rank, clues_found, xp_earned, correct, is_boss, created_at",
+          )
+          .in("user_id", ids),
       ]);
       if (agentsRes.error) throw agentsRes.error;
       if (runsRes.error) throw runsRes.error;
