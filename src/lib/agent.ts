@@ -13,7 +13,13 @@ export interface Agent {
   outfit: string;
   cert: CertKey | null;
   xp: number;
+  streak_count: number;
+  longest_streak: number;
+  last_played_on: string | null;
 }
+
+const AGENT_COLUMNS =
+  "user_id, name, skin, hair, outfit, cert, xp, streak_count, longest_streak, last_played_on";
 
 export function useSession() {
   const [session, setSession] = useState<Session | null>(null);
@@ -41,7 +47,7 @@ export function useAgent(userId?: string) {
     queryFn: async (): Promise<Agent | null> => {
       const { data, error } = await supabase
         .from("agents")
-        .select("user_id, name, skin, hair, outfit, cert, xp")
+        .select(AGENT_COLUMNS)
         .eq("user_id", userId!)
         .maybeSingle();
       if (error) throw error;
@@ -57,7 +63,7 @@ export function useSaveAgent(userId?: string) {
       const { data, error } = await supabase
         .from("agents")
         .upsert({ user_id: userId!, ...patch }, { onConflict: "user_id" })
-        .select("user_id, name, skin, hair, outfit, cert, xp")
+        .select(AGENT_COLUMNS)
         .single();
       if (error) throw error;
       return data as Agent;
