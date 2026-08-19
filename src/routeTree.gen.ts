@@ -15,6 +15,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedBadgesRouteImport } from './routes/_authenticated/badges'
 import { Route as AuthenticatedCityRouteImport } from './routes/_authenticated/city'
 import { Route as AuthenticatedCreatorRouteImport } from './routes/_authenticated/creator'
+import { Route as AuthenticatedLeaderboardRouteImport } from './routes/_authenticated/leaderboard'
 import { Route as AuthenticatedQuestRouteImport } from './routes/_authenticated/quest'
 import { Route as AuthenticatedSkillsRouteImport } from './routes/_authenticated/skills'
 import { Route as AuthenticatedBriefMissionIdRouteImport } from './routes/_authenticated/brief.$missionId'
@@ -50,6 +51,12 @@ const AuthenticatedCreatorRoute = AuthenticatedCreatorRouteImport.update({
   path: '/creator',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedLeaderboardRoute =
+  AuthenticatedLeaderboardRouteImport.update({
+    id: '/leaderboard',
+    path: '/leaderboard',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedQuestRoute = AuthenticatedQuestRouteImport.update({
   id: '/quest',
   path: '/quest',
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/badges': typeof AuthenticatedBadgesRoute
   '/city': typeof AuthenticatedCityRoute
   '/creator': typeof AuthenticatedCreatorRoute
+  '/leaderboard': typeof AuthenticatedLeaderboardRoute
   '/quest': typeof AuthenticatedQuestRoute
   '/skills': typeof AuthenticatedSkillsRoute
   '/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
@@ -97,6 +105,7 @@ export interface FileRoutesByTo {
   '/badges': typeof AuthenticatedBadgesRoute
   '/city': typeof AuthenticatedCityRoute
   '/creator': typeof AuthenticatedCreatorRoute
+  '/leaderboard': typeof AuthenticatedLeaderboardRoute
   '/quest': typeof AuthenticatedQuestRoute
   '/skills': typeof AuthenticatedSkillsRoute
   '/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
@@ -111,6 +120,7 @@ export interface FileRoutesById {
   '/_authenticated/badges': typeof AuthenticatedBadgesRoute
   '/_authenticated/city': typeof AuthenticatedCityRoute
   '/_authenticated/creator': typeof AuthenticatedCreatorRoute
+  '/_authenticated/leaderboard': typeof AuthenticatedLeaderboardRoute
   '/_authenticated/quest': typeof AuthenticatedQuestRoute
   '/_authenticated/skills': typeof AuthenticatedSkillsRoute
   '/_authenticated/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
     | '/badges'
     | '/city'
     | '/creator'
+    | '/leaderboard'
     | '/quest'
     | '/skills'
     | '/brief/$missionId'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '/badges'
     | '/city'
     | '/creator'
+    | '/leaderboard'
     | '/quest'
     | '/skills'
     | '/brief/$missionId'
@@ -150,6 +162,7 @@ export interface FileRouteTypes {
     | '/_authenticated/badges'
     | '/_authenticated/city'
     | '/_authenticated/creator'
+    | '/_authenticated/leaderboard'
     | '/_authenticated/quest'
     | '/_authenticated/skills'
     | '/_authenticated/brief/$missionId'
@@ -207,6 +220,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCreatorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/leaderboard': {
+      id: '/_authenticated/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof AuthenticatedLeaderboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/quest': {
       id: '/_authenticated/quest'
       path: '/quest'
@@ -249,6 +269,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedBadgesRoute: typeof AuthenticatedBadgesRoute
   AuthenticatedCityRoute: typeof AuthenticatedCityRoute
   AuthenticatedCreatorRoute: typeof AuthenticatedCreatorRoute
+  AuthenticatedLeaderboardRoute: typeof AuthenticatedLeaderboardRoute
   AuthenticatedQuestRoute: typeof AuthenticatedQuestRoute
   AuthenticatedSkillsRoute: typeof AuthenticatedSkillsRoute
   AuthenticatedBriefMissionIdRoute: typeof AuthenticatedBriefMissionIdRoute
@@ -260,6 +281,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedBadgesRoute: AuthenticatedBadgesRoute,
   AuthenticatedCityRoute: AuthenticatedCityRoute,
   AuthenticatedCreatorRoute: AuthenticatedCreatorRoute,
+  AuthenticatedLeaderboardRoute: AuthenticatedLeaderboardRoute,
   AuthenticatedQuestRoute: AuthenticatedQuestRoute,
   AuthenticatedSkillsRoute: AuthenticatedSkillsRoute,
   AuthenticatedBriefMissionIdRoute: AuthenticatedBriefMissionIdRoute,
