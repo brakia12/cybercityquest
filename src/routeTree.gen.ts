@@ -20,6 +20,7 @@ import { Route as AuthenticatedLeaderboardRouteImport } from './routes/_authenti
 import { Route as AuthenticatedQuestRouteImport } from './routes/_authenticated/quest'
 import { Route as AuthenticatedSkillsRouteImport } from './routes/_authenticated/skills'
 import { Route as AuthenticatedBriefMissionIdRouteImport } from './routes/_authenticated/brief.$missionId'
+import { Route as AuthenticatedClassClassIdRouteImport } from './routes/_authenticated/class.$classId'
 import { Route as AuthenticatedMissionMissionIdRouteImport } from './routes/_authenticated/mission.$missionId'
 import { Route as AuthenticatedResultRunIdRouteImport } from './routes/_authenticated/result.$runId'
 
@@ -79,6 +80,12 @@ const AuthenticatedBriefMissionIdRoute =
     path: '/brief/$missionId',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedClassClassIdRoute =
+  AuthenticatedClassClassIdRouteImport.update({
+    id: '/class/$classId',
+    path: '/class/$classId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedMissionMissionIdRoute =
   AuthenticatedMissionMissionIdRouteImport.update({
     id: '/mission/$missionId',
@@ -103,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/quest': typeof AuthenticatedQuestRoute
   '/skills': typeof AuthenticatedSkillsRoute
   '/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
+  '/class/$classId': typeof AuthenticatedClassClassIdRoute
   '/mission/$missionId': typeof AuthenticatedMissionMissionIdRoute
   '/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
@@ -117,6 +125,7 @@ export interface FileRoutesByTo {
   '/quest': typeof AuthenticatedQuestRoute
   '/skills': typeof AuthenticatedSkillsRoute
   '/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
+  '/class/$classId': typeof AuthenticatedClassClassIdRoute
   '/mission/$missionId': typeof AuthenticatedMissionMissionIdRoute
   '/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
@@ -133,6 +142,7 @@ export interface FileRoutesById {
   '/_authenticated/quest': typeof AuthenticatedQuestRoute
   '/_authenticated/skills': typeof AuthenticatedSkillsRoute
   '/_authenticated/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
+  '/_authenticated/class/$classId': typeof AuthenticatedClassClassIdRoute
   '/_authenticated/mission/$missionId': typeof AuthenticatedMissionMissionIdRoute
   '/_authenticated/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/quest'
     | '/skills'
     | '/brief/$missionId'
+    | '/class/$classId'
     | '/mission/$missionId'
     | '/result/$runId'
   fileRoutesByTo: FileRoutesByTo
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/quest'
     | '/skills'
     | '/brief/$missionId'
+    | '/class/$classId'
     | '/mission/$missionId'
     | '/result/$runId'
   id:
@@ -178,6 +190,7 @@ export interface FileRouteTypes {
     | '/_authenticated/quest'
     | '/_authenticated/skills'
     | '/_authenticated/brief/$missionId'
+    | '/_authenticated/class/$classId'
     | '/_authenticated/mission/$missionId'
     | '/_authenticated/result/$runId'
   fileRoutesById: FileRoutesById
@@ -267,6 +280,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBriefMissionIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/class/$classId': {
+      id: '/_authenticated/class/$classId'
+      path: '/class/$classId'
+      fullPath: '/class/$classId'
+      preLoaderRoute: typeof AuthenticatedClassClassIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/mission/$missionId': {
       id: '/_authenticated/mission/$missionId'
       path: '/mission/$missionId'
@@ -293,6 +313,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedQuestRoute: typeof AuthenticatedQuestRoute
   AuthenticatedSkillsRoute: typeof AuthenticatedSkillsRoute
   AuthenticatedBriefMissionIdRoute: typeof AuthenticatedBriefMissionIdRoute
+  AuthenticatedClassClassIdRoute: typeof AuthenticatedClassClassIdRoute
   AuthenticatedMissionMissionIdRoute: typeof AuthenticatedMissionMissionIdRoute
   AuthenticatedResultRunIdRoute: typeof AuthenticatedResultRunIdRoute
 }
@@ -306,6 +327,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedQuestRoute: AuthenticatedQuestRoute,
   AuthenticatedSkillsRoute: AuthenticatedSkillsRoute,
   AuthenticatedBriefMissionIdRoute: AuthenticatedBriefMissionIdRoute,
+  AuthenticatedClassClassIdRoute: AuthenticatedClassClassIdRoute,
   AuthenticatedMissionMissionIdRoute: AuthenticatedMissionMissionIdRoute,
   AuthenticatedResultRunIdRoute: AuthenticatedResultRunIdRoute,
 }
