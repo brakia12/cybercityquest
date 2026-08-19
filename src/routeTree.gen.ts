@@ -12,10 +12,15 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedBadgesRouteImport } from './routes/_authenticated/badges'
 import { Route as AuthenticatedCityRouteImport } from './routes/_authenticated/city'
+import { Route as AuthenticatedClassroomRouteImport } from './routes/_authenticated/classroom'
 import { Route as AuthenticatedCreatorRouteImport } from './routes/_authenticated/creator'
+import { Route as AuthenticatedLeaderboardRouteImport } from './routes/_authenticated/leaderboard'
 import { Route as AuthenticatedQuestRouteImport } from './routes/_authenticated/quest'
+import { Route as AuthenticatedSkillsRouteImport } from './routes/_authenticated/skills'
 import { Route as AuthenticatedBriefMissionIdRouteImport } from './routes/_authenticated/brief.$missionId'
+import { Route as AuthenticatedClassClassIdRouteImport } from './routes/_authenticated/class.$classId'
 import { Route as AuthenticatedMissionMissionIdRouteImport } from './routes/_authenticated/mission.$missionId'
 import { Route as AuthenticatedResultRunIdRouteImport } from './routes/_authenticated/result.$runId'
 
@@ -33,9 +38,19 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedBadgesRoute = AuthenticatedBadgesRouteImport.update({
+  id: '/badges',
+  path: '/badges',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedCityRoute = AuthenticatedCityRouteImport.update({
   id: '/city',
   path: '/city',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedClassroomRoute = AuthenticatedClassroomRouteImport.update({
+  id: '/classroom',
+  path: '/classroom',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedCreatorRoute = AuthenticatedCreatorRouteImport.update({
@@ -43,15 +58,32 @@ const AuthenticatedCreatorRoute = AuthenticatedCreatorRouteImport.update({
   path: '/creator',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedLeaderboardRoute =
+  AuthenticatedLeaderboardRouteImport.update({
+    id: '/leaderboard',
+    path: '/leaderboard',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedQuestRoute = AuthenticatedQuestRouteImport.update({
   id: '/quest',
   path: '/quest',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedSkillsRoute = AuthenticatedSkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedBriefMissionIdRoute =
   AuthenticatedBriefMissionIdRouteImport.update({
     id: '/brief/$missionId',
     path: '/brief/$missionId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedClassClassIdRoute =
+  AuthenticatedClassClassIdRouteImport.update({
+    id: '/class/$classId',
+    path: '/class/$classId',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedMissionMissionIdRoute =
@@ -70,20 +102,30 @@ const AuthenticatedResultRunIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/badges': typeof AuthenticatedBadgesRoute
   '/city': typeof AuthenticatedCityRoute
+  '/classroom': typeof AuthenticatedClassroomRoute
   '/creator': typeof AuthenticatedCreatorRoute
+  '/leaderboard': typeof AuthenticatedLeaderboardRoute
   '/quest': typeof AuthenticatedQuestRoute
+  '/skills': typeof AuthenticatedSkillsRoute
   '/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
+  '/class/$classId': typeof AuthenticatedClassClassIdRoute
   '/mission/$missionId': typeof AuthenticatedMissionMissionIdRoute
   '/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/badges': typeof AuthenticatedBadgesRoute
   '/city': typeof AuthenticatedCityRoute
+  '/classroom': typeof AuthenticatedClassroomRoute
   '/creator': typeof AuthenticatedCreatorRoute
+  '/leaderboard': typeof AuthenticatedLeaderboardRoute
   '/quest': typeof AuthenticatedQuestRoute
+  '/skills': typeof AuthenticatedSkillsRoute
   '/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
+  '/class/$classId': typeof AuthenticatedClassClassIdRoute
   '/mission/$missionId': typeof AuthenticatedMissionMissionIdRoute
   '/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
@@ -92,10 +134,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/badges': typeof AuthenticatedBadgesRoute
   '/_authenticated/city': typeof AuthenticatedCityRoute
+  '/_authenticated/classroom': typeof AuthenticatedClassroomRoute
   '/_authenticated/creator': typeof AuthenticatedCreatorRoute
+  '/_authenticated/leaderboard': typeof AuthenticatedLeaderboardRoute
   '/_authenticated/quest': typeof AuthenticatedQuestRoute
+  '/_authenticated/skills': typeof AuthenticatedSkillsRoute
   '/_authenticated/brief/$missionId': typeof AuthenticatedBriefMissionIdRoute
+  '/_authenticated/class/$classId': typeof AuthenticatedClassClassIdRoute
   '/_authenticated/mission/$missionId': typeof AuthenticatedMissionMissionIdRoute
   '/_authenticated/result/$runId': typeof AuthenticatedResultRunIdRoute
 }
@@ -104,20 +151,30 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/badges'
     | '/city'
+    | '/classroom'
     | '/creator'
+    | '/leaderboard'
     | '/quest'
+    | '/skills'
     | '/brief/$missionId'
+    | '/class/$classId'
     | '/mission/$missionId'
     | '/result/$runId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
+    | '/badges'
     | '/city'
+    | '/classroom'
     | '/creator'
+    | '/leaderboard'
     | '/quest'
+    | '/skills'
     | '/brief/$missionId'
+    | '/class/$classId'
     | '/mission/$missionId'
     | '/result/$runId'
   id:
@@ -125,10 +182,15 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/badges'
     | '/_authenticated/city'
+    | '/_authenticated/classroom'
     | '/_authenticated/creator'
+    | '/_authenticated/leaderboard'
     | '/_authenticated/quest'
+    | '/_authenticated/skills'
     | '/_authenticated/brief/$missionId'
+    | '/_authenticated/class/$classId'
     | '/_authenticated/mission/$missionId'
     | '/_authenticated/result/$runId'
   fileRoutesById: FileRoutesById
@@ -162,11 +224,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/badges': {
+      id: '/_authenticated/badges'
+      path: '/badges'
+      fullPath: '/badges'
+      preLoaderRoute: typeof AuthenticatedBadgesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/city': {
       id: '/_authenticated/city'
       path: '/city'
       fullPath: '/city'
       preLoaderRoute: typeof AuthenticatedCityRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/classroom': {
+      id: '/_authenticated/classroom'
+      path: '/classroom'
+      fullPath: '/classroom'
+      preLoaderRoute: typeof AuthenticatedClassroomRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/creator': {
@@ -176,6 +252,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCreatorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/leaderboard': {
+      id: '/_authenticated/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof AuthenticatedLeaderboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/quest': {
       id: '/_authenticated/quest'
       path: '/quest'
@@ -183,11 +266,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedQuestRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/skills': {
+      id: '/_authenticated/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof AuthenticatedSkillsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/brief/$missionId': {
       id: '/_authenticated/brief/$missionId'
       path: '/brief/$missionId'
       fullPath: '/brief/$missionId'
       preLoaderRoute: typeof AuthenticatedBriefMissionIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/class/$classId': {
+      id: '/_authenticated/class/$classId'
+      path: '/class/$classId'
+      fullPath: '/class/$classId'
+      preLoaderRoute: typeof AuthenticatedClassClassIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/mission/$missionId': {
@@ -208,19 +305,29 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedBadgesRoute: typeof AuthenticatedBadgesRoute
   AuthenticatedCityRoute: typeof AuthenticatedCityRoute
+  AuthenticatedClassroomRoute: typeof AuthenticatedClassroomRoute
   AuthenticatedCreatorRoute: typeof AuthenticatedCreatorRoute
+  AuthenticatedLeaderboardRoute: typeof AuthenticatedLeaderboardRoute
   AuthenticatedQuestRoute: typeof AuthenticatedQuestRoute
+  AuthenticatedSkillsRoute: typeof AuthenticatedSkillsRoute
   AuthenticatedBriefMissionIdRoute: typeof AuthenticatedBriefMissionIdRoute
+  AuthenticatedClassClassIdRoute: typeof AuthenticatedClassClassIdRoute
   AuthenticatedMissionMissionIdRoute: typeof AuthenticatedMissionMissionIdRoute
   AuthenticatedResultRunIdRoute: typeof AuthenticatedResultRunIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedBadgesRoute: AuthenticatedBadgesRoute,
   AuthenticatedCityRoute: AuthenticatedCityRoute,
+  AuthenticatedClassroomRoute: AuthenticatedClassroomRoute,
   AuthenticatedCreatorRoute: AuthenticatedCreatorRoute,
+  AuthenticatedLeaderboardRoute: AuthenticatedLeaderboardRoute,
   AuthenticatedQuestRoute: AuthenticatedQuestRoute,
+  AuthenticatedSkillsRoute: AuthenticatedSkillsRoute,
   AuthenticatedBriefMissionIdRoute: AuthenticatedBriefMissionIdRoute,
+  AuthenticatedClassClassIdRoute: AuthenticatedClassClassIdRoute,
   AuthenticatedMissionMissionIdRoute: AuthenticatedMissionMissionIdRoute,
   AuthenticatedResultRunIdRoute: AuthenticatedResultRunIdRoute,
 }
