@@ -2,7 +2,7 @@ import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
 import { useClassRoster, useMyClasses } from "@/lib/game";
-import { useAgent, useSession } from "@/lib/agent";
+import { useSession } from "@/lib/agent";
 import { missionsByCert } from "@/lib/missions";
 import { completedIds, levelFor } from "@/lib/progression";
 
@@ -24,7 +24,6 @@ export const Route = createFileRoute("/_authenticated/class/$classId")({
 function ClassScreen() {
   const { classId } = useParams({ from: "/_authenticated/class/$classId" });
   const { session } = useSession();
-  const { data: agent } = useAgent(session?.user.id);
   const { data: classes = [] } = useMyClasses(session?.user.id);
   const { data: roster = [], isLoading } = useClassRoster(classId);
 
@@ -94,7 +93,6 @@ function ClassScreen() {
           <Link to="/city">Cyber City →</Link>
         </Button>
       </div>
-      {agent && null}
     </main>
   );
 }

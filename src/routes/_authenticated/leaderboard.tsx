@@ -47,9 +47,7 @@ function LeaderboardScreen() {
                 className={`cyber-card flex items-center gap-4 ${me ? "border-primary" : ""}`}
               >
                 <div className="w-8 text-xl font-black text-muted-foreground">{i + 1}</div>
-                <div className="w-12 shrink-0">
-                  <AgentAvatar skin={row.skin} hair={row.hair} outfit={row.outfit} />
-                </div>
+                <AgentAvatar skin={row.skin} hair={row.hair} outfit={row.outfit} scale={0.13} />
                 <div className="min-w-0 flex-1">
                   <strong className="truncate">
                     {row.name}
