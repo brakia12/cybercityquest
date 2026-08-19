@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedBadgesRouteImport } from './routes/_authenticated/badges'
 import { Route as AuthenticatedCityRouteImport } from './routes/_authenticated/city'
 import { Route as AuthenticatedCreatorRouteImport } from './routes/_authenticated/creator'
 import { Route as AuthenticatedQuestRouteImport } from './routes/_authenticated/quest'
@@ -32,6 +33,11 @@ const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedBadgesRoute = AuthenticatedBadgesRouteImport.update({
+  id: '/badges',
+  path: '/badges',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedCityRoute = AuthenticatedCityRouteImport.update({
   id: '/city',
@@ -70,6 +76,7 @@ const AuthenticatedResultRunIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/badges': typeof AuthenticatedBadgesRoute
   '/city': typeof AuthenticatedCityRoute
   '/creator': typeof AuthenticatedCreatorRoute
   '/quest': typeof AuthenticatedQuestRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/badges': typeof AuthenticatedBadgesRoute
   '/city': typeof AuthenticatedCityRoute
   '/creator': typeof AuthenticatedCreatorRoute
   '/quest': typeof AuthenticatedQuestRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/badges': typeof AuthenticatedBadgesRoute
   '/_authenticated/city': typeof AuthenticatedCityRoute
   '/_authenticated/creator': typeof AuthenticatedCreatorRoute
   '/_authenticated/quest': typeof AuthenticatedQuestRoute
@@ -104,6 +113,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/badges'
     | '/city'
     | '/creator'
     | '/quest'
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/badges'
     | '/city'
     | '/creator'
     | '/quest'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/badges'
     | '/_authenticated/city'
     | '/_authenticated/creator'
     | '/_authenticated/quest'
@@ -161,6 +173,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/badges': {
+      id: '/_authenticated/badges'
+      path: '/badges'
+      fullPath: '/badges'
+      preLoaderRoute: typeof AuthenticatedBadgesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/city': {
       id: '/_authenticated/city'
@@ -208,6 +227,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedBadgesRoute: typeof AuthenticatedBadgesRoute
   AuthenticatedCityRoute: typeof AuthenticatedCityRoute
   AuthenticatedCreatorRoute: typeof AuthenticatedCreatorRoute
   AuthenticatedQuestRoute: typeof AuthenticatedQuestRoute
@@ -217,6 +237,7 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedBadgesRoute: AuthenticatedBadgesRoute,
   AuthenticatedCityRoute: AuthenticatedCityRoute,
   AuthenticatedCreatorRoute: AuthenticatedCreatorRoute,
   AuthenticatedQuestRoute: AuthenticatedQuestRoute,
